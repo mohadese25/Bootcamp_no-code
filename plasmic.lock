@@ -58,14 +58,14 @@
           "checksum": "9f4aa6a5a6fabb1b8e82715e067ec7c4"
         },
         {
-          "assetId": "o2ZMgZa3TgeYzUr8o7pxit",
-          "type": "projectCss",
-          "checksum": "781017700bebd632e02414b1ca5fc166"
-        },
-        {
           "type": "icon",
           "assetId": "aD5kIbdAC3mX",
           "checksum": "7eb3d7279d6cf35ff5b4d6a77940bc08"
+        },
+        {
+          "assetId": "o2ZMgZa3TgeYzUr8o7pxit",
+          "type": "projectCss",
+          "checksum": "781017700bebd632e02414b1ca5fc166"
         }
       ],
       "codegenVersion": "0.0.1"
