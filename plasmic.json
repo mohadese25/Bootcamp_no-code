@@ -5,6 +5,10 @@
     "scheme": "blackbox",
     "reactRuntime": "classic"
   },
+  "style": {
+    "scheme": "css-modules",
+    "defaultStyleCssFilePath": "plasmic/plasmic__default_style.css"
+  },
   "images": {
     "scheme": "public-files",
     "publicDir": "../public",
@@ -16,8 +20,108 @@
   },
   "srcDir": "components",
   "defaultPlasmicDir": "./plasmic",
-  "projects": [],
-  "globalVariants": {},
+  "projects": [
+    {
+      "projectId": "kS7YGZfVr6mU43XDQjXELc",
+      "projectApiToken": "ByNEUEKB7Hd9g2PkeOVot8RZTanYGn3rlmcjYTbULlTb9TEjfypxJ4uDH0HeEMQazKWvfHB4CFNXVgy8YmEyA",
+      "projectName": "react-chartjs-2",
+      "version": ">0.0.0",
+      "cssFilePath": "plasmic/react_chartjs_2/plasmic.module.css",
+      "components": [],
+      "icons": [],
+      "images": [],
+      "indirect": true,
+      "globalContextsFilePath": "",
+      "splitsProviderFilePath": "",
+      "codeComponents": [
+        {
+          "id": "0Qywk3bhW-8",
+          "name": "SimpleChart",
+          "displayName": "hostless-react-chartjs-2-simple-chart",
+          "componentImportPath": "@plasmicpkgs/react-chartjs-2"
+        }
+      ],
+      "customFunctions": []
+    },
+    {
+      "projectId": "o2ZMgZa3TgeYzUr8o7pxit",
+      "projectApiToken": "0wnBilNRBq8tnQf9RsaWUoKLgScEmJaKV8yiOQKhoZoiuboC8LcyJ3T7fogJTCUOMPqVpMgfjrgorvb1h0Kkg",
+      "projectName": "boot camp",
+      "version": "latest",
+      "cssFilePath": "plasmic/boot_camp/plasmic.module.css",
+      "components": [
+        {
+          "id": "_uKo45ti7jaU",
+          "name": "Homepage",
+          "type": "managed",
+          "projectId": "o2ZMgZa3TgeYzUr8o7pxit",
+          "renderModuleFilePath": "plasmic/boot_camp/PlasmicHomepage.tsx",
+          "importSpec": {
+            "modulePath": "../src/pages/index.tsx"
+          },
+          "cssFilePath": "plasmic/boot_camp/PlasmicHomepage.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/"
+        },
+        {
+          "id": "SERpesx0EPSx",
+          "name": "Button",
+          "type": "managed",
+          "projectId": "o2ZMgZa3TgeYzUr8o7pxit",
+          "renderModuleFilePath": "plasmic/boot_camp/PlasmicButton.tsx",
+          "importSpec": {
+            "modulePath": "Button.tsx"
+          },
+          "cssFilePath": "plasmic/boot_camp/PlasmicButton.module.css",
+          "scheme": "blackbox",
+          "componentType": "component",
+          "plumeType": "button"
+        }
+      ],
+      "icons": [
+        {
+          "id": "6xMIQD_3_pej",
+          "name": "ChecksvgIcon",
+          "moduleFilePath": "plasmic/boot_camp/icons/PlasmicIcon__Checksvg.tsx"
+        },
+        {
+          "id": "PE5SOyZiXdd6",
+          "name": "IconIcon",
+          "moduleFilePath": "plasmic/boot_camp/icons/PlasmicIcon__Icon.tsx"
+        }
+      ],
+      "images": [],
+      "indirect": false,
+      "globalContextsFilePath": "",
+      "splitsProviderFilePath": "",
+      "codeComponents": [
+        {
+          "id": "mM_mSMX6xHFk",
+          "name": "PlasmicHead",
+          "displayName": "hostless-plasmic-head",
+          "componentImportPath": "@plasmicapp/react-web"
+        },
+        {
+          "id": "VhLorlgTxxPG",
+          "name": "Fetcher",
+          "displayName": "plasmic-data-source-fetcher",
+          "componentImportPath": "@plasmicapp/react-web/lib/data-sources"
+        }
+      ],
+      "customFunctions": []
+    }
+  ],
+  "globalVariants": {
+    "variantGroups": [
+      {
+        "id": "0pnZOFC-h_xT",
+        "name": "Screen",
+        "projectId": "o2ZMgZa3TgeYzUr8o7pxit",
+        "contextFilePath": "plasmic/boot_camp/PlasmicGlobalVariant__Screen.tsx"
+      }
+    ]
+  },
   "wrapPagesWithGlobalContexts": true,
   "nextjsConfig": {
     "pagesDir": "../src/pages"
