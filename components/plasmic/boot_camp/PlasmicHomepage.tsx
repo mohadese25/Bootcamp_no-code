@@ -371,15 +371,20 @@ function PlasmicHomepage__RenderFunc(props: {
           >
             {"\u0646\u0627\u0645 \u06a9\u0627\u0631\u0628\u0631\u06cc"}
           </div>
-          <Button className={classNames("__wab_instance", sty.button__lsgb)}>
-            {"Button"}
-          </Button>
           <Dialog
             data-plasmic-name={"dialog"}
             data-plasmic-override={overrides.dialog}
             className={classNames("__wab_instance", sty.dialog)}
             onOpenChange={generateStateOnChangeProp($state, ["dialog", "open"])}
             open={generateStateValueProp($state, ["dialog", "open"])}
+            trigger={
+              <Button
+                className={classNames("__wab_instance", sty.button__lsgb)}
+                submitsForm={false}
+              >
+                {"show"}
+              </Button>
+            }
           />
         </div>
       </div>
