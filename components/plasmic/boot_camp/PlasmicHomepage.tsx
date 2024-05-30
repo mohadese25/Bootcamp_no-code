@@ -59,8 +59,9 @@ import {
   useGlobalActions
 } from "@plasmicapp/react-web/lib/host";
 
-import { SimpleChart } from "@plasmicpkgs/react-chartjs-2";
 import Button from "../../Button"; // plasmic-import: SERpesx0EPSx/component
+import { SimpleChart } from "@plasmicpkgs/react-chartjs-2";
+import { Fetcher } from "@plasmicapp/react-web/lib/data-sources";
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
@@ -68,7 +69,7 @@ import projectcss from "./plasmic.module.css"; // plasmic-import: o2ZMgZa3TgeYzU
 import sty from "./PlasmicHomepage.module.css"; // plasmic-import: _uKo45ti7jaU/css
 
 import ChecksvgIcon from "./icons/PlasmicIcon__Checksvg"; // plasmic-import: 6xMIQD_3_pej/icon
-import IconIcon from "./icons/PlasmicIcon__Icon"; // plasmic-import: PE5SOyZiXdd6/icon
+import Icon2Icon from "./icons/PlasmicIcon__Icon2"; // plasmic-import: aD5kIbdAC3mX/icon
 
 createPlasmicElementProxy;
 
@@ -85,9 +86,10 @@ export type PlasmicHomepage__OverridesType = {
   root?: Flex__<"div">;
   section?: Flex__<"section">;
   h1?: Flex__<"h1">;
-  text?: Flex__<"div">;
-  chart?: Flex__<typeof SimpleChart>;
+  freeBox?: Flex__<"div">;
   button?: Flex__<typeof Button>;
+  svg?: Flex__<"svg">;
+  chart?: Flex__<typeof SimpleChart>;
 };
 
 export interface DefaultHomepageProps {}
@@ -166,32 +168,115 @@ function PlasmicHomepage__RenderFunc(props: {
               {"Welcome to your first page."}
             </h1>
             <div
-              data-plasmic-name={"text"}
-              data-plasmic-override={overrides.text}
+              data-plasmic-name={"freeBox"}
+              data-plasmic-override={overrides.freeBox}
+              className={classNames(projectcss.all, sty.freeBox)}
+            >
+              {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
+                (() => {
+                  try {
+                    return ["hi", "bye", "mom"];
+                  } catch (e) {
+                    if (
+                      e instanceof TypeError ||
+                      e?.plasmicType === "PlasmicUndefinedDataError"
+                    ) {
+                      return [];
+                    }
+                    throw e;
+                  }
+                })()
+              ).map((__plasmic_item_0, __plasmic_idx_0) => {
+                const currentItem = __plasmic_item_0;
+                const currentIndex = __plasmic_idx_0;
+                return (
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__t1Ltf
+                    )}
+                    key={currentIndex}
+                  >
+                    <React.Fragment>
+                      {(() => {
+                        try {
+                          return currentItem;
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return "";
+                          }
+                          throw e;
+                        }
+                      })()}
+                    </React.Fragment>
+                  </div>
+                );
+              })}
+              <div
+                className={classNames(
+                  projectcss.all,
+                  projectcss.__wab_text,
+                  sty.text__moq6
+                )}
+              >
+                <React.Fragment>
+                  <React.Fragment>
+                    {
+                      "If you haven't already done so, go back and learn the basics by going through the Plasmic Levels tutorial.\n\nIt's always easier to start from examples! Add a new page using a template\u2014do this from the list of pages in the top toolbar.\n\nOr press the big blue + button to start inserting items into this page.\n\nIntegrate this project into your codebase\u2014press the "
+                    }
+                  </React.Fragment>
+                  <span
+                    className={"plasmic_default__all plasmic_default__span"}
+                    style={{ fontWeight: 700 }}
+                  >
+                    {"Code"}
+                  </span>
+                  <React.Fragment>
+                    {
+                      " button in the top right and follow the quickstart instructions.\n\nJoin our Slack community (icon in bottom left) for help any time."
+                    }
+                  </React.Fragment>
+                </React.Fragment>
+              </div>
+            </div>
+            <Button
+              data-plasmic-name={"button"}
+              data-plasmic-override={overrides.button}
+              className={classNames("__wab_instance", sty.button)}
+              endIcon={
+                <Icon2Icon
+                  data-plasmic-name={"svg"}
+                  data-plasmic-override={overrides.svg}
+                  className={classNames(projectcss.all, sty.svg)}
+                  role={"img"}
+                />
+              }
+              link={"https://google.com"}
+              showEndIcon={true}
+              target={true}
+            >
+              <div
+                className={classNames(
+                  projectcss.all,
+                  projectcss.__wab_text,
+                  sty.text__bJdNk
+                )}
+              >
+                {"google"}
+              </div>
+            </Button>
+            <div
               className={classNames(
                 projectcss.all,
                 projectcss.__wab_text,
-                sty.text
+                sty.text__fvXmw
               )}
             >
-              <React.Fragment>
-                <React.Fragment>
-                  {
-                    "If you haven't already done so, go back and learn the basics by going through the Plasmic Levels tutorial.\n\nIt's always easier to start from examples! Add a new page using a template\u2014do this from the list of pages in the top toolbar.\n\nOr press the big blue + button to start inserting items into this page.\n\nIntegrate this project into your codebase\u2014press the "
-                  }
-                </React.Fragment>
-                <span
-                  className={"plasmic_default__all plasmic_default__span"}
-                  style={{ fontWeight: 700 }}
-                >
-                  {"Code"}
-                </span>
-                <React.Fragment>
-                  {
-                    " button in the top right and follow the quickstart instructions.\n\nJoin our Slack community (icon in bottom left) for help any time."
-                  }
-                </React.Fragment>
-              </React.Fragment>
+              {"Enter some text"}
             </div>
           </section>
           <SimpleChart
@@ -205,12 +290,6 @@ function PlasmicHomepage__RenderFunc(props: {
               { region: "AMER", revenue: 3215, spend: 1656 }
             ]}
           />
-
-          <Button
-            data-plasmic-name={"button"}
-            data-plasmic-override={overrides.button}
-            className={classNames("__wab_instance", sty.button)}
-          />
         </div>
       </div>
     </React.Fragment>
@@ -218,12 +297,13 @@ function PlasmicHomepage__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  root: ["root", "section", "h1", "text", "chart", "button"],
-  section: ["section", "h1", "text"],
+  root: ["root", "section", "h1", "freeBox", "button", "svg", "chart"],
+  section: ["section", "h1", "freeBox", "button", "svg"],
   h1: ["h1"],
-  text: ["text"],
-  chart: ["chart"],
-  button: ["button"]
+  freeBox: ["freeBox"],
+  button: ["button", "svg"],
+  svg: ["svg"],
+  chart: ["chart"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -232,9 +312,10 @@ type NodeDefaultElementType = {
   root: "div";
   section: "section";
   h1: "h1";
-  text: "div";
-  chart: typeof SimpleChart;
+  freeBox: "div";
   button: typeof Button;
+  svg: "svg";
+  chart: typeof SimpleChart;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -299,9 +380,10 @@ export const PlasmicHomepage = Object.assign(
     // Helper components rendering sub-elements
     section: makeNodeComponent("section"),
     h1: makeNodeComponent("h1"),
-    text: makeNodeComponent("text"),
-    chart: makeNodeComponent("chart"),
+    freeBox: makeNodeComponent("freeBox"),
     button: makeNodeComponent("button"),
+    svg: makeNodeComponent("svg"),
+    chart: makeNodeComponent("chart"),
 
     // Metadata about props expected for PlasmicHomepage
     internalVariantProps: PlasmicHomepage__VariantProps,

@@ -7,7 +7,7 @@
   },
   "style": {
     "scheme": "css-modules",
-    "defaultStyleCssFilePath": "plasmic/plasmic__default_style.css"
+    "defaultStyleCssFilePath": "plasmic/plasmic__default_style.module.css"
   },
   "images": {
     "scheme": "public-files",
@@ -41,7 +41,8 @@
           "componentImportPath": "@plasmicpkgs/react-chartjs-2"
         }
       ],
-      "customFunctions": []
+      "customFunctions": [],
+      "jsBundleThemes": []
     },
     {
       "projectId": "o2ZMgZa3TgeYzUr8o7pxit",
@@ -89,6 +90,11 @@
           "id": "PE5SOyZiXdd6",
           "name": "IconIcon",
           "moduleFilePath": "plasmic/boot_camp/icons/PlasmicIcon__Icon.tsx"
+        },
+        {
+          "id": "aD5kIbdAC3mX",
+          "name": "Icon2Icon",
+          "moduleFilePath": "plasmic/boot_camp/icons/PlasmicIcon__Icon2.tsx"
         }
       ],
       "images": [],
