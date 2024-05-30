@@ -61,6 +61,7 @@ import {
 
 import Button from "../../Button"; // plasmic-import: SERpesx0EPSx/component
 import { SimpleChart } from "@plasmicpkgs/react-chartjs-2";
+import Dialog from "../../Dialog"; // plasmic-import: xgtc_lPXq9-h/component
 import { Fetcher } from "@plasmicapp/react-web/lib/data-sources";
 
 import "@plasmicapp/react-web/lib/plasmic.css";
@@ -70,6 +71,7 @@ import sty from "./PlasmicHomepage.module.css"; // plasmic-import: _uKo45ti7jaU/
 
 import ChecksvgIcon from "./icons/PlasmicIcon__Checksvg"; // plasmic-import: 6xMIQD_3_pej/icon
 import Icon2Icon from "./icons/PlasmicIcon__Icon2"; // plasmic-import: aD5kIbdAC3mX/icon
+import IconIcon from "./icons/PlasmicIcon__Icon"; // plasmic-import: PE5SOyZiXdd6/icon
 
 createPlasmicElementProxy;
 
@@ -87,9 +89,10 @@ export type PlasmicHomepage__OverridesType = {
   section?: Flex__<"section">;
   h1?: Flex__<"h1">;
   freeBox?: Flex__<"div">;
-  button?: Flex__<typeof Button>;
   svg?: Flex__<"svg">;
   chart?: Flex__<typeof SimpleChart>;
+  img?: Flex__<typeof PlasmicImg__>;
+  dialog?: Flex__<typeof Dialog>;
 };
 
 export interface DefaultHomepageProps {}
@@ -125,6 +128,24 @@ function PlasmicHomepage__RenderFunc(props: {
 
   const currentUser = useCurrentUser?.() || {};
 
+  const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
+    () => [
+      {
+        path: "dialog.open",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => true
+      }
+    ],
+    [$props, $ctx, $refs]
+  );
+  const $state = useDollarState(stateSpecs, {
+    $props,
+    $ctx,
+    $queries: {},
+    $refs
+  });
+
   return (
     <React.Fragment>
       <Head></Head>
@@ -149,6 +170,7 @@ function PlasmicHomepage__RenderFunc(props: {
             projectcss.plasmic_tokens,
             sty.root
           )}
+          dir={"rtl"}
         >
           <section
             data-plasmic-name={"section"}
@@ -244,9 +266,8 @@ function PlasmicHomepage__RenderFunc(props: {
               </div>
             </div>
             <Button
-              data-plasmic-name={"button"}
-              data-plasmic-override={overrides.button}
-              className={classNames("__wab_instance", sty.button)}
+              className={classNames("__wab_instance", sty.button___5PBai)}
+              color={"blue"}
               endIcon={
                 <Icon2Icon
                   data-plasmic-name={"svg"}
@@ -256,6 +277,36 @@ function PlasmicHomepage__RenderFunc(props: {
                 />
               }
               link={"https://google.com"}
+              onClick={async event => {
+                const $steps = {};
+
+                $steps["updateStateVariable"] = true
+                  ? (() => {
+                      const actionArgs = {};
+                      return (({
+                        variable,
+                        value,
+                        startIndex,
+                        deleteCount
+                      }) => {
+                        if (!variable) {
+                          return;
+                        }
+                        const { objRoot, variablePath } = variable;
+                        undefined;
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+                if (
+                  $steps["updateStateVariable"] != null &&
+                  typeof $steps["updateStateVariable"] === "object" &&
+                  typeof $steps["updateStateVariable"].then === "function"
+                ) {
+                  $steps["updateStateVariable"] = await $steps[
+                    "updateStateVariable"
+                  ];
+                }
+              }}
               showEndIcon={true}
               target={true}
             >
@@ -290,6 +341,46 @@ function PlasmicHomepage__RenderFunc(props: {
               { region: "AMER", revenue: 3215, spend: 1656 }
             ]}
           />
+
+          <PlasmicImg__
+            data-plasmic-name={"img"}
+            data-plasmic-override={overrides.img}
+            alt={""}
+            className={classNames(sty.img)}
+            displayHeight={"84px"}
+            displayMaxHeight={"none"}
+            displayMaxWidth={"100%"}
+            displayMinHeight={"0"}
+            displayMinWidth={"0"}
+            displayWidth={"94px"}
+            loading={"lazy"}
+            src={{
+              src: "/plasmic/boot_camp/images/downloadpng.png",
+              fullWidth: 768,
+              fullHeight: 768,
+              aspectRatio: undefined
+            }}
+          />
+
+          <div
+            className={classNames(
+              projectcss.all,
+              projectcss.__wab_text,
+              sty.text__mWb0
+            )}
+          >
+            {"\u0646\u0627\u0645 \u06a9\u0627\u0631\u0628\u0631\u06cc"}
+          </div>
+          <Button className={classNames("__wab_instance", sty.button__lsgb)}>
+            {"Button"}
+          </Button>
+          <Dialog
+            data-plasmic-name={"dialog"}
+            data-plasmic-override={overrides.dialog}
+            className={classNames("__wab_instance", sty.dialog)}
+            onOpenChange={generateStateOnChangeProp($state, ["dialog", "open"])}
+            open={generateStateValueProp($state, ["dialog", "open"])}
+          />
         </div>
       </div>
     </React.Fragment>
@@ -297,13 +388,14 @@ function PlasmicHomepage__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  root: ["root", "section", "h1", "freeBox", "button", "svg", "chart"],
-  section: ["section", "h1", "freeBox", "button", "svg"],
+  root: ["root", "section", "h1", "freeBox", "svg", "chart", "img", "dialog"],
+  section: ["section", "h1", "freeBox", "svg"],
   h1: ["h1"],
   freeBox: ["freeBox"],
-  button: ["button", "svg"],
   svg: ["svg"],
-  chart: ["chart"]
+  chart: ["chart"],
+  img: ["img"],
+  dialog: ["dialog"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -313,9 +405,10 @@ type NodeDefaultElementType = {
   section: "section";
   h1: "h1";
   freeBox: "div";
-  button: typeof Button;
   svg: "svg";
   chart: typeof SimpleChart;
+  img: typeof PlasmicImg__;
+  dialog: typeof Dialog;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -381,9 +474,10 @@ export const PlasmicHomepage = Object.assign(
     section: makeNodeComponent("section"),
     h1: makeNodeComponent("h1"),
     freeBox: makeNodeComponent("freeBox"),
-    button: makeNodeComponent("button"),
     svg: makeNodeComponent("svg"),
     chart: makeNodeComponent("chart"),
+    img: makeNodeComponent("img"),
+    dialog: makeNodeComponent("dialog"),
 
     // Metadata about props expected for PlasmicHomepage
     internalVariantProps: PlasmicHomepage__VariantProps,
